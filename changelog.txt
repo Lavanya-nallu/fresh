@@ -1,0 +1,467 @@
+Version 2.16.2 - May 03, 2022
+================================================================================
+
+Make the Hibernate 6 Ehcache dependency optional #433
+
+Version 2.16.1 - April 16, 2022
+================================================================================
+
+Fix the batch sequence generation for the 2.x version of H2 #428
+
+Remove warning generated on startup "Type [org.hibernate.type.CustomType@6142b9dd] defined no registration keys; ignoring" #427
+
+Version 2.16.0 - April 12, 2022
+================================================================================
+
+Add support for customizing the JsonType underlying Oracle column type #424
+
+Change JsonBinarySqlTypeDescriptor to bind the JSON object as String #423
+
+Add support for Oracle 21c JSON columns #422
+
+Version 2.15.2 - April 10, 2022
+================================================================================
+
+Register the PostgreSQLGuavaRangeType only if Guava Range is available on the classpath #421
+
+Version 2.15.1 - April 07, 2022
+================================================================================
+
+Rename the Hibernate 6 Dynamic mutable and immutable abstract types #419
+
+Add support for Hibernate 5.6 in BatchSequenceGenerator #417
+
+Version 2.15.0 - April 06, 2022
+================================================================================
+
+Add support for Hibernate 6 #401
+
+Support for Jakarta EE 9? requires investigation #380
+
+Create a TypeContributor that registers all supported types #166
+
+Version 2.14.1 - March 23, 2022
+================================================================================
+
+Add support for using OffsetDateTime in JSON objects #408
+
+Add support for LocalDateTime[] mappings #407
+
+Add support for LocalDate[] mappings #406
+
+PostgreSQLEnumType#sqlTypes() should always return Types.VARCHAR #399
+
+Version 2.14.0 - October 24, 2021
+================================================================================
+
+Move SQLExtractor to the query package #359
+
+Move the type/util classes that are not associated to types to the generic util package #358
+
+Move the ResultTransformer implementations to the query package #357
+
+Move CamelCaseToSnakeCaseNamingStrategy to the naming package #356
+
+Add BatchSequenceGenerator #354
+
+Version 2.13.0 - October 09, 2021
+================================================================================
+
+Avoid the unnecessary UPDATE for JsonNode entity mappings #348
+
+Parse application.properties and load properties upon initialization #344
+
+Version 2.12.1 - July 10, 2021
+================================================================================
+
+Add support for half-hour time zones in ZonedDateTime #329
+
+Version 2.12.0 - June 14, 2021
+================================================================================
+
+Add hibernate-type-55 module #324
+
+Prevent NullPointerException caused by sqlArrayType in the ListArrayTypeDescriptor #320
+
+Version 2.11.1 - May 11, 2021
+================================================================================
+
+Add support for using the generic JsonType even when passing it via addScalar #317
+
+Version 2.11.0 - May 10, 2021
+================================================================================
+
+Add generic JsonType that auto-resolves the SqlTypeDescriptor #174
+
+Version 2.10.4 - March 24, 2021
+================================================================================
+
+Add fractional support to PostgreSQLIntervalType #307
+
+Use the provided delimiter parameter in the StringUtils.join method #302
+
+Version 2.10.3 - February 25, 2021
+================================================================================
+
+ReflectionUtils.getGenericTypes throws ClassCastException when using Kotlin Enums #300
+
+False positive "class should override both the equals and hashCode methods" for Enum values #295
+
+Version 2.10.2 - January 05, 2021
+================================================================================
+
+Support PostgreSQL empty & inf range and OffsetDateTime for Guava ranges #287
+
+Version 2.10.1 - December 08, 2020
+================================================================================
+
+Log a WARN message if the JSON object does not implement equals and hashCode #281
+
+Convert parsing or processing errors to HibernateException #280
+
+The NotSerializableException is thrown when mapping a Map<String, List<>> entity attribute to a JSON column #243
+
+Add MySQL BinaryType #23
+
+Version 2.10.0 - October 07, 2020
+================================================================================
+
+Add support for mapping BigDecimal arrays #272
+
+Add sub-second precision for Range<LocalDateTime> #267
+
+Add MonthDayType to map a java.time.MonthDay to either a DATE or an INTEGER column type #262
+
+YearMonthTypeDescriptor failed to wrap null value from database in use case of YearMonthIntegerType #113
+
+Version 2.9.13 - July 28, 2020
+================================================================================
+
+Add support for mapping Java boolean[] arrays or List<Boolean> on PostgreSQL boolean[] array column types #167
+
+Version 2.9.12 - June 19, 2020
+================================================================================
+
+Add jackson-module-jaxb-annotations dependency #247
+
+Guava range mapping does not support infinite bounds #244
+
+Allow JSON Types to handle parameterized entity attribute type variables #237
+
+Version 2.9.11 - June 02, 2020
+================================================================================
+
+Add SQLExtractor utility #241
+
+A ClassNotFoundException is thrown when using an Enum List or Array in Kotlin #238
+
+Version 2.9.10 - May 15, 2020
+================================================================================
+
+Allow the ClassImportIntegrator to include a relative path when registering DTO aliases #231
+
+ObjectMapperJsonSerializer#clone throws NullPointerException if the Map key or value are null #227
+
+Version 2.9.9 - April 26, 2020
+================================================================================
+
+Allow the custom ObjectMapper be used for JSON serialization #220
+
+Allow ArrayType to work on HSQLDB #219
+
+Expose the Hibernate Type for Range elements #215
+
+Make AbstractArrayTypeDescriptor#getArrayObjectClass public #214
+
+Version 2.9.8 - April 09, 2020
+================================================================================
+
+Add support for PostgreSQL "infinity" String values #211
+
+Add support for saving null JSON objects when using the JsonStringType #210
+
+Add support for "empty" String values when mapping PostgreSQL range column types #209
+
+Version 2.9.7 - March 23, 2020
+================================================================================
+
+Add support for checking if the bounds are open or closed for a given Range #204
+
+Row is always updated when using JSON objects wrapped in POJOs with no explicit equals method duplicate #203
+
+Allow all ArrayType objects to be used in the addScalar Hibernate Query method #190
+
+Version 2.9.6 - March 21, 2020
+================================================================================
+
+Use byte arrays when cloning JSON objects #198
+
+Add Iso8601MonthType to save the 1-based value instead of the 0-based Enum ordinal for a java.time.Month entity attribute #56
+
+Version 2.9.5 - March 07, 2020
+================================================================================
+
+Switch to using a single Logger instance #197
+
+Version 2.9.4 - February 26, 2020
+================================================================================
+
+A NullPointerException is thrown when adding a ListArrayType definition to a MappedSuperClass #189
+
+The ListArrayTypeDescriptor deepCopy method should not convert a List to an Java array #187
+
+Add support for double arrays #183
+
+Improve logging of array parameters in BasicBinder #182
+
+ListArrayType generates an extra UPDATE when persisting an entity #180
+
+Version 2.9.3 - January 26, 2020
+================================================================================
+
+PostgreSQLEnumType is not compatible with Hibernate 5.2 because of JavaTypeDescriptorRegistry and TypeConfiguration #176
+
+Unexpected Hibernate dirty checking when using Sets #175
+
+GraalVM / Quarkus native build support #173
+
+When fetching an entity from the second-level cache, ListArrayType throws UnsupportedOperationException #169
+
+Version 2.9.2 - January 14, 2020
+================================================================================
+
+Multidimensional Enum arrays are wrapped to String arrays and a ClassCastException is thrown #168
+
+Version 2.9.1 - January 14, 2020
+================================================================================
+
+When fetching a List backed by a NULL PostgreSQL array, a NPE is thrown #164
+
+Version 2.9.0 - January 06, 2020
+================================================================================
+
+Add support for MapResultTransformer and ListResultTransformer #163
+
+Empty multi-dimensional arrays throw ClassCastException #161
+
+Add support for mapping java.util.Date ARRAY or List to PostgreSQL DATE[] and TIMESTAMP[] #150
+
+Add support for mapping ARRAY to a java.util.List #97
+
+Version 2.8.0 - December 08, 2019
+================================================================================
+
+ObjectMapperJsonSerializer should inspect the inner Collection element type #158
+
+Upgrade Jackson Databind library to 2.9.10.1 #157
+
+Add support for ClassImportIntegrator for compact DTOs #151
+
+NPE thrown by AbstractArrayTypeDescriptor#setParameterValues when creating a PostgreSQL ARRAY #142
+
+Add support for PostgreSQL tx_vector column type #116
+
+Version 2.7.1 - October 10, 2019
+================================================================================
+
+Unexpected dirty checking behavior on collections of POJOs mapped with JsonBinaryType #138
+
+Mapping Enum to a String column uses toString() instead of name() #135
+
+Upgrade Jackson Databind library version to 2.9.10 #134
+
+Add support for passing the mapping Class to Json Types #133
+
+Version 2.7.0 - September 14, 2019
+================================================================================
+
+Add support for JSON column values for Oracle #131
+
+Add support for mapping a Guava Range object to a PostgreSQL range type #129
+
+Add support for mapping the Java Period object to a PostgreSQL interval type #128
+
+Add YearMonthTimestampType #127
+
+Ability to use PostgreSQLEnumType and EnumArrayType with TypedParameterValue #125
+
+Version 2.6.1 - August 29, 2019
+================================================================================
+
+Add support for Oracle Interval Day to Second column type #123
+
+Version 2.6.0 - August 23, 2019
+================================================================================
+
+ImmutableType should also implement the Type interface #119
+
+Remove unnecessary null checks and PGobject instantiations #118
+
+Add support for the PostgreSQL citext type #117
+
+Version 2.5.1 - August 15, 2019
+================================================================================
+
+Add support for PostgreSQL Interval column type #53
+
+Add missing type INSTANCE constants #111
+
+Upgrade Jackson Databind artifact version
+
+Version 2.5.0 - July 05, 2019
+================================================================================
+
+Allow the Configuration to be accessed by all custom Types #107
+
+Add handling for null PostgreSQL Range column values #106
+
+Add PostgreSQL UUID ARRAY support #105
+
+Version 2.4.4 - June 06, 2019
+================================================================================
+
+Update Javadoc to specify which JSON types are suitable for PostgreSQL and MySQL.
+
+Add ZoneIdType to map the java.time.ZoneId to a VARCHAR-based column #103
+
+In case the JSON attribute is a java.util.Set, an additional SQL UPDATE is executed when persisting the entity #100
+
+Replace reflection usage in PostgreSQL Types with Driver-specific API calls #99
+
+Version 2.4.3 - April 07, 2019
+================================================================================
+
+Adjustment in ZoneDateTime pattern for 1-6 nanoseconds digits #90
+
+Array types use a singleton Java descriptors and that prevents them from being
+initialized separately using dynamic parameters #84
+
+Version 2.4.2 - February 26, 2019
+================================================================================
+
+Add a LongArrayType to support long[] array mappings #82
+
+Version 2.4.1 - February 01, 2019
+================================================================================
+
+Change constructor type args from Class to Type for JSON Types so it's easier to register them dynamically
+
+Support insertion of String values into JSON columns #80
+
+Fix issue with ZonedDateTimeRanges and DST #78
+
+Version 2.4.0 - January 02, 2019
+================================================================================
+
+Add support for PostgreSQL range type #63
+
+Add support for the PostgreSQL hstore type #44
+
+Version 2.3.5 - December 03, 2018
+================================================================================
+
+Add EnumArrayType to support mapping database Enums as Java arrays #58
+
+Version 2.3.4 - November 14, 2018
+================================================================================
+
+Add CamelCaseToSnakeCaseNamingStrategy so that we can automatically map the cameCase JPA properties
+to snake_case database identifiers.
+
+Version 2.3.3 - October 23, 2018
+================================================================================
+
+Add types for java.time.Year and java.time.Month #51
+
+Add continuous Integer solution for YearMonthType #47
+
+Version 2.3.2 - October 18, 2018
+================================================================================
+
+Add the Java 9 automatic module name to the MANIFEST file.
+
+Migrate hibernate-types-52 to Jackson 2.9.7.
+
+Version 2.3.1 - October 16, 2018
+================================================================================
+
+Add support for the java.util.YearMonth which can be persisted as a DATE or INTEGER column
+
+Version 2.3.0 - September 06, 2018
+================================================================================
+
+Add InetType for PostgreSQL #43
+
+Version 2.2.3 - September 06, 2018
+================================================================================
+
+String fields on entity as JSONB don't work correctly #39
+
+Version 2.2.2 - June 03, 2018
+================================================================================
+
+Allow the JSON to be extracted either via the ResultSet#getObject or ResultSet#getString based on the underlying SQL type descriptor.
+
+Version 2.2.1 - May 12, 2018
+================================================================================
+
+Pass the original IOException when throwing the IllegalArgumentException from ObjectMapperWrapper#readValue and ObjectMapperWrapper#writeValueAsString.
+
+Version 2.2.0 - March 27, 2018
+================================================================================
+
+Fix issue which allows you to customize the deep copy mechanism via the JsonSerializer interface supplied by the hibernate.types.json.serializer configuration property #21
+
+Version 2.1.1 - March 08, 2018
+================================================================================
+
+Allows using the ObjectMapperWrapper in JSON types and pass a custom ObjectMapper via the hibernate.types.jackson.object.mapper configuration property.
+
+Refactor internal PropertyLoader to Configuration and make it work with hibernate.properties as well.
+
+Version 2.1.0 - March 07, 2018
+================================================================================
+
+Add support to provide an external ObjectMapper #3
+
+Add the cause to the IllegalArgumentException thrown by JacksonUtil.
+
+Version 2.0.0 - February 02, 2018
+================================================================================
+
+Refactor support for List, Set, Map to be saved as JSON using a simplified mechanism which no longer requires the TypeReferenceJsonStringSerializer. For this reason, this version breaks backward compatibility.
+
+Optimize String equality checks in JsonTypeDescriptor.
+
+Migrate hibernate-types-52 to Jackson 2.9.0.
+
+Version 1.2.0 - November 28, 2018
+================================================================================
+
+Serialization problem when using JsonNodeBinaryType and Hibernate 2nd-level cache #14
+
+Add support for List, Set, Map to be saved as JSON #11
+
+Version 1.1.2 - November 11, 2018
+================================================================================
+
+JacksonUtil#clone should support Lists as well #8
+
+Add an INSTANCE constant to existing Types.
+
+Version 1.1.1 - October 26, 2018
+================================================================================
+
+Update JavaDocs to reference documentation.
+
+Version 1.1.0 - October 26, 2018
+================================================================================
+
+Add support for PostgreSQL Enum Type.
+
+Use ObjectMapper#findAndRegisterModules() for the default ObjectMapper.
+
+Version 1.0.0 - September 25, 2018
+================================================================================
+
+Initial release which adds the JSON, Array, Nullable Character and ImmutableType support.
