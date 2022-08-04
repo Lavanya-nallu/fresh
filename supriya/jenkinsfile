@@ -1,0 +1,81 @@
+pipeline {
+    agent { label 'master' }
+    
+    
+    environment {
+
+      sonar_url = 'http://172.31.84.209:9000'
+      sonar_username = 'admin'
+      sonar_password = 'admin'
+      nexus_url = '172.31.84.209:8081'
+      artifact_version = '4.0.0'
+
+ }
+
+       tools {
+        jdk 'java11'
+        maven 'maven'
+    }
+
+    stages { 
+      stage('Git Clone') {
+            steps {
+                // Get some code from a GitHub repository
+                git 'https://github.com/chinni4321/game-of-life.git'
+
+            }
+        }
+        stage('Maven build') {
+            steps {
+                sh  'mvn clean install -U -Dmaven.test.skip=true'
+
+            }
+        }
+       stage ('Sonarqube Analysis'){
+           steps {
+           withSonarQubeEnv('sonarqube') {
+           sh '''
+           mvn -e -B sonar:sonar -Dsonar.java.source=1.8 -Dsonar.host.url="${sonar_url}" -Dsonar.login="${sonar_username}" -Dsonar.password="${sonar_password}" -Dsonar.sourceEncoding=UTF-8
+           '''
+           }
+         }
+      } 
+       stage ('Publish Artifact') {
+        steps {
+          nexusArtifactUploader artifacts: [[artifactId: 'gameoflife', classifier: '', file: "/var/lib/jenkins/workspace/pipeline/gameoflife-build/target/gameoflife-build-1.0-SNAPSHOT.jar", type: 'jar']], credentialsId: 'b70b50a7-8272-4c38-a0c9-a621fb7e128e', groupId: 'com.wakaleo.gameoflife', nexusUrl: "${nexus_url}", nexusVersion: 'nexus3', protocol: 'http', repository: 'release', version: "${artifact_version}"
+         archiveArtifacts '**/*.jar'
+        }
+      }
+      stage('Building image') {
+       steps{
+         script {
+           dockerImage = docker.build "chinniprashanthsahul/myimage:gameoflife"
+           }
+          }
+         }
+
+   stage('Docker publish') {
+    steps {
+    script {
+        withDockerRegistry(registry:[ credentialsId: 'registryCredential']) {
+         sh 'docker push chinniprashanthsahul/myimage:gameoflife'
+         }
+        }
+      }
+     }
+     stage ('Deploy to kubernetes'){
+        steps{
+          script {
+            sh "kubectl config use-context gke_virtual-cairn-335910_us-central1-c_demo"
+            sh "cd ${WORKSPACE}"
+            sh "kubectl delete -f '${WORKSPACE}'/kube/deployment.yaml"
+            sh "kubectl apply -f '${WORKSPACE}'/kube/service.yaml"
+            sh "kubectl create -f '${WORKSPACE}'/kube/deployment.yaml"
+           
+          
+        }
+       }
+      }
+   
+  }
+}
