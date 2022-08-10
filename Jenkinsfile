@@ -20,7 +20,7 @@ pipeline{
         }
       }
     }
-    stage{
+    stage("build"){
       when{
         expression{params.executeTests}
       }
@@ -30,14 +30,14 @@ pipeline{
         }
       }
     }
-    stage{
+    stage("test"){
      steps{
         script{
           gv.testApp()
         }
       }
     }
-    stage{
+    stage("deploy"){
       when{
         expression{params.Version=='1.2.0'}
       }
