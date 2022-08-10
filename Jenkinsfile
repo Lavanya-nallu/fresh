@@ -5,7 +5,7 @@ pipeline{
      maven 'maven'
   }
     environment{
-       SERVER_CRED=credentials('server')
+       SERVER_CRED=credentials('server-cred')
     }
   parameters{
     string(name: 'Branch',defaultValue: 'main',description: 'please type branch')
