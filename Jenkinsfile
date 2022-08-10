@@ -4,6 +4,9 @@ pipeline{
      jdk 'java8'
      maven 'maven'
   }
+    environment{
+       SERVER_CRED=credentials('server')
+    }
   parameters{
     string(name: 'Branch',defaultValue: 'main',description: 'please type branch')
     choice(name: 'Version',choices: ['1.2.0','1.2.1','1.2.2'],description: 'select version')
@@ -39,6 +42,8 @@ pipeline{
         expression{params.Version=='1.2.0'}
       }
      steps{
+         echo "deploying ${SERVER_CRED}"
+         sh " ${SERVER_CRED}"
         script{
           gv.deployApp()
         }
