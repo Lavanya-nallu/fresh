@@ -4,9 +4,6 @@ pipeline{
      jdk 'java8'
      maven 'maven'
   }
-  environment{
-     SERVER_CREDENTIALS= credentials('server_credentials') 
-  }  
   parameters{
     string(name: 'Branch',defaultValue: 'main',description: 'please type branch')
     choice(name: 'Version',choices: ['1.2.0','1.2.1','1.2.2'],description: 'select version')
