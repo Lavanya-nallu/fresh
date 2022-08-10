@@ -42,8 +42,6 @@ pipeline{
         expression{params.Version=='1.2.0'}
       }
      steps{
-         echo "deploying ${SERVER_CRED}"
-         sh " ${SERVER_CRED}"
         script{
           gv.deployApp()
         }
