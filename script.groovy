@@ -8,6 +8,8 @@ def testApp()
 }
 def deployApp()
 {
-   echo 'deploy application'
+    echo 'deploy application'
+    echo "deploying ${SERVER_CRED}"
+    sh " ${SERVER_CRED}"
 }
 return this
